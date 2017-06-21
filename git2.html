@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+</header>
+<article>
+
+
+<!-- Een project starten -->
+<h2>2: Een project maken</h2>
+<p>Laten we - in de commandline - een nieuwe directory (map) aanmaken voor ons eerste project:</p>
+<pre><code class="language-batch">
+cd 
+mkdir tmp
+cd tmp
+mkdir project1
+cd project1</code></pre>
+<p style="font-size: 9pt"><i>Dit kan natuurlijk ook met de verkenner of vanuit een editor</i></p>
+<p>Plaats deze directory onder versie controle:</p>
+<pre><code class="language-git">git init</code></pre>
+
+<p>Als je in de bash commandline (linux) intikt <pre><code class="language-bash">ls -alF</code></pre> of in de cmd van windows: <pre><code class="language-batch">dir /ah</code></pre> zie je dat er een .git directory gemaakt is. (Normaal is deze directory 'hidden' vandaar opties -alF die je aan ls meegeven moet.) De git repository voor de directory van dit project staat hierin. Maar: git regelt de inhoud hiervan helemaal zelf. Je hoeft zelf die directory nooit in. 
+</p>
+<p>Laten we het programmeren aan dit project beginnen. Tik het volgende in je programma-editor in:</p>
+<pre ><code class="language-markup"><script type="prism-html-markup">
+<body>
+<h1>Welkom bij dit project!</h1>
+</body></script></code></pre>
+
+<p>En sla het op onder de naam <i>probeersel.html</i>. Probeer of het werkt.</p>
+<p>Maak op dezelfde manier een <i>contact.html</i> aan met deze inhoud:</p>
+<pre ><code class="language-markup"><script type="prism-html-markup"><body>
+<h2>Contactinformatie</h2>
+<p>U kunt mij bereiken via (email) iets@ergens.nl</p>
+</body></script></code></pre>
+
+
+
+
+<p>Laten we eens kijken wat git denkt dat we aan het doen zijn met een van de commando's die je vaak zult gebruiken:</p>
+<pre><code class="language-batch">git status</code></pre>
+Dit is het resultaat:</p>
+<p><img class="gitscreen" src="gitscreen1.png"></p>
+<p>Uit het screenshot wordt duidelijk dat er nog niets in de repository staat ('initial commit') en dat er twee files 'untracked' zijn. De volgende stap wordt ook aangegeven: git add om de files toe te voegen aan de wachtrij voor de repository.</p>
+
+<pre><code class="language-batch">git add probeersel.html</code></pre>
+<p>Geef weer het commando git status.</p>
+<p><img class="gitscreen" src="gitscreen2.png"></p>
+<p>Nu rapporeert dit commando dat <i>probeersel.html</i> een "new file to be commited" is. (Een file die 'committed' is hoort officieel bij een project.) Laten we de file 'committen':</p>
+<p><pre><code class="language-batch">git commit -m "Een eerste commit"</code></pre></p>
+<p>Achter de -m staat een tekst in "" die de commit beschrijft. Als je de -m en de tekst weglaat zal een teksteditor openen en kun je een lange beschrijving geven als dat nodig is. Op dit moment volstaat die ene samenvattende regel. Dit zie je op het scherm:</p>
+<p><img class="gitscreen" src="gitscreen3.png"></p>
+<p>Als je nu weer git status ingeeft zul je alleen een melding krijgen over <i>contact.html</i>: "Untracked". Over <i>probeersel.html</i> geen woord. Als git niets over een bestand zegt betekent dit dat het bestand wel wordt bijgehouden, maar dat het sinds de laatste commit niet meer gewijzigd is.</p>
+<p>Overigens: het volgende commando voegt in één keer alle bestanden uit de working directory toe aan de wachtrij (<i>let op de punt!!</i>):</p>
+<pre><code class="language-batch">git add .</code></pre>
+<p>Als we dit nu ingeven en we doen meteen de tweede commit dan zijn beide files onder versie controle. Dus in één adem:</p>
+<pre><code class="language-batch">
+git add .
+git commit -m "Een tweede commit"
+</code></pre>
+
+<p>We hebben succesvol ons eerste project onder versie controle geplaatst.</p>
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

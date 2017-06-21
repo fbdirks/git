@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+</header>
+<article>
+<h2>1: Versie Controle met Git</h2>
+<p style="font-size: 9pt">Dit is een (aangepaste) vertaling van de <a href="git_tutorial.pdf">Git Tutorial</a> van Jae Woo Lee and Stephen A. Edwards Columbia University (maart 2013)</p>
+
+<p>Git is een versie controle systeem voor programmacode. Zo'n systeem is nuttig als je in een team werkt, maar ook als je alleen werkt. Het is een handig hulpmiddel om bij te houden welke veranderingen je hebt aangebracht aan je programmacode en om als dat nodig is terug te stappen naar een vorige versie. Als je in een team werkt kun je met een versie controle systeem bijhouden wie welke bijdragen heeft gedaan aan de code, waar conflicten zitten in de code en je kunt verschillende ontwikkellijnen opzetten en daar moeiteloos tussen switchen. Overigens: je kunt git ook gebruiken voor versiecontrole van willekeurig welke type bestanden. Git werkt met 'binary objects' en dat kan een html pagina zijn, maar ook een word document of een afbeelding!</p>
+<p>Git kun je hier downloaden: <a href="https://git-scm.com/">https://git-scm.com/</a>. Er zijn ook portable versies (die vanaf een USB stick draaien) en er zijn versies voor alle grote besturingssystemen.</p>
+<p>De basisversie van Git is een programma dat alleen via de commandline werkt. Je kunt zowel in de cmd (of powershell) van windows werken als in een speciale (bij Git 'meegeleverde') bash-omgeving, dat is een onder Linux veel gebruikte commandline. Behalve deze commandline versie zijn er voor Git ook windowed clients. In diverse editors (Sublime, Brackets e.d.) zitten Git clients ingebouwd of zijn er als extensie (add on) aan toe te voegen.</p>
+<p>In dit document gebruiken we verder de command line in Linux of Windows</p>
+<p>Heel belangrijke sites in de Git-wereld (behalve git-scm.com) zijn <a href="http://github.com">Github</a> en <a href="http://www.bitbucket.com">Bitbucket</a>. Hier kun je als persoon of als team git projecten hosten en van allerlei documentatie over git vinden. Van harte aanbevolen. Met name voor het werken in teams zijn Github en Bitbucket perfecte oplossingen. Zolang je project 'Open-Source' is zijn Github en Bitbucket <i>gratis</i> oplossingen.</p>
+<p>Neem even de tijd voor het downloaden en installeren van jouw git versie.</p>
+
+<!-- Configureren -->
+<h3>Configureren van je Git-omgeving</h3>
+<p>Vertel git je naam en emailadres:</p>
+
+<pre><code class="language-git">git config --global user.name "Jouw volledige naam
+git config --global user.email "jouw_adres@ergens.domein";</code></pre>
+
+<p>Git slaat dit op in de git configuratie file: ~/.gitconfig file. Het is een goed idee om de EDITOR omgevingsvariabele van Git te zetten. Dit bepaalt de editor die wordt gestart voor het typen van log berichten.</p>
+<div><img src="basic-git.jpg" style="clear: both"></div>
+<!-- de drie areas concept -->
+<h3>Concept: drie 'toestanden'</h3>
+<p>Git is een systeem dat je toe past op een map waarin je wilt gaan werken. Als je wilt gaan programmeren in de map <b>project1</b> kun je daar een nieuwe Git map van maken. Hoe dat gaat zie je in de volgende paragraaf. Vanaf het moment dat je dat gedaan hebt zal Git alle bestanden in die map (en submappen) indelen in drie 'toestanden':
+<ul>
+<li>Working directory: dat zijn alle bestanden in de map en submappen, belangrijk of niet.(1)</li>
+<li>Staging area: dat zijn alle bestanden in de map en submappen die je aan <b>wilt</b> gaan melden voor versiecontrole</li>
+<li>Repository: dat zijn alle bestanden die daadwerkelijk <b>zijn</b> aangemeld bij de versiecontrole</li>
+</ul>
+<span style="font-size: 9pt">(1) Op verzoek kan Git bepaalde bestanden negeren</span></p>
+<p>De belangrijkste Git commando's zijn de commando's die te maken hebben met deze toestanden of de overgangen ertussen:
+<ul>
+<li>git status : om overzicht te krijgen over de drie toestanden</li>
+<li>git add : om (veranderde) bestanden van de working directory naar de staging area te krijgen</li>
+<li>git commit : om (veranderde) bestanden van de staging area over te brengen naar de repository</li>
+<li>git checkout: om (veranderde) bestanden van de repository over te brengen naar de working directory</li>
+</ul>
+
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

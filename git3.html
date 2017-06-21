@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="UTF-8">
+</head>
+<body>
+<header>
+</header>
+<article>
+
+
+<h2>3: Bestanden veranderen</h2>
+<p>Verander <i>probeersel.html</i> bijvoorbeeld op deze manier:<p>
+<pre ><code class="language-markup"><script type="prism-html-markup">
+<body>
+<h1>Welcome to this project!</h1>
+</body></script></code></pre>
+<p>De 'internationale' versie, om het zo te zeggen. Geef weer het commando <pre><code class="language-batch">git status</code></pre>Git rapporteert dat <i>probeersel.html</i> "Changed but not updated" is.:</p>
+<p><img class="gitscreen" src="gitscreen4.png"></p>
+<p> Dit betekent dat sinds de laatste commit het bestand gewijzigd is, maar nog niet in de wachtkamer geplaatst. We kunnen er aan doorwerken zolang we willen. Als we het willen gaan toevoegen aan het project moeten we het wel in de wachtkamer plaatsen. In git kan een bestand alleen toegevoegd worden aan een project vanuit die wachtkamer.</p>
+<p>We zien ook nog een tweede ding: er is een *.bak bestand bijgekomen. Dit is de backup die mijn editor gemaakt heeft van het oude bestand. Normaal gesproken hebben we er geen behoefte aan om deze bestanden ook in een git project op te nemen. Ze zullen dus de working directory nooit hoeven te verlaten. Maar we zullen ze wel steeds zien staan en dat is storend. Maar als we in deze map een bestand aanmaken dat <i>.gitignore</i> heet (let op de eerste punt) en in dat bestand opnemen:
+<pre><code class="language-git">*.bak</code></pre>
+dan zal Git alle bestanden die op *.bak eindigen voortaan negeren. Tip: zet ook een regel met .gitignore in .gitignore zelf!</p>
+<p>We keren terug naar het veranderde probeersel.html. Wat is het verschil met de oude versie? We geven dit commando:</p>
+<pre><code class="language-batch">git diff</code></pre>
+of:
+<pre><code class="language-batch">git diff --color</code></pre>
+als het scherm verschillen in kleur ondersteunt. De output zal zoiets zijn:</p>
+<p><img class="gitscreen" src="gitscreen5.png"></p>
+<p>Je ziet wat er <b>niet</b> meer in de nieuwe file staat (regels met een '-') en wat er <b>juist wel</b> in de nieuwe file staat (regels met een '+'). Het commando <b>git diff</b> is niet verplicht, het geeft je alleen een controle mogelijkheid.</p>
+<p>De volgende stap is het verplaatsen van het gewijzigde bestand naar de staging area, de 'wachtkamer':</p>
+<pre><code class="language-batch">git add probeersel.html</code></pre>
+<p>In git betekent 'add': verplaats het (gewijzigde) bestand naar de staging area. Het kan dan gaan om een verandering aan een bestaande ('tracked') bestand, maar ook om een geheel nieuw bestand. Dit is soms verwarrend voor wie dit systeem niet gewend is. Als maar duidelijk is: ook <b>veranderde</b> bestanden moeten weer ge-<b>add</b> worden!</p>
+<p>Als je nu weer een git diff doet zie je geen veranderingen meer. Het gewijzigde bestand zit nu al in de wachtkamer, git diff let alleen op bestanden die daar nog niet in zitten. Git diff kijkt alleen naar de verschillen tussen de bestanden waar aan gewerkt wordt en de staging area, niet op de verschillen tussen de repository (met de files die ge-commit zijn) en de staging area.</p>
+<p>Als je wel het verschil tussen de laatste commit en de staging area wil zien doe je:</p>
+<pre><code class="language-batch">git diff --cached</code></pre>
+<p>Nu gaan we onze veranderingen (die nu in de staging area zitten) committen, als het ware officieel maken dus. Als het commitbericht een regel is kun je dit ook rechtstreeks op de commandline opgeven:</p>
+<pre><code class="language-batch">git commit -m "Internationale versie"</code></pre>
+<p>Soms wil je de commit-geschiedenis bekijken:</p>
+<pre><code class="language-batch">git log"</code></pre>
+<p><img class="gitscreen" src="gitscreen6.png"></p>
+<p>Je kunt een korte samenvatting bij iedere commit geven:</p>
+<pre><code class="language-batch">git log --stat --summary</code></pre>
+<p>Of je kunt bij een commit de volledige 'verschil geschiedenis' bekijken:</p>
+<pre><code class="language-batch">git log -p --color</code></pre>
+<p>Die laatste optie <i>--color</i> is optioneel. Deze actie is minder handig bij grote commits.</p>
+
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

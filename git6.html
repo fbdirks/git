@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="windows-1252">
+</head>
+<body>
+<header>
+</header>
+<article>
+
+
+<h2>6: De Log: terug in de geschiedenis..</h2>
+<p>Versiecontrole systemen hebben vooral nut omdat ze laten zien hoe een project zich ontwikkeld heeft en daarbij de mogelijkheid bieden stappen terug te zetten als een nieuwe ontwikkeling achteraf toch niet blijkt te werken. Ze functioneren hierin als een soort 'UnDo' machine. Iedereen die wel eens aan complexere softwareprojecten heeft gewerkt kent wel die momenten waarop je na een heleboel programmeer geploeter weer even terug wou naar de oude code 'die wel werkte'. </p>
+<p>Een belangrijke voorwaarde voor deze functie is dat er regelmatige commits zijn gedaan, want git houdt alleen van de <b>repository</b> de geschiedenis bij. Het is dus geen rare gewoonte om iedere dag of ieder uur dat je aan een project werkt of in ieder geval na iedere functionele mijlpaal een commit te doen.</p> 
+<p>De geschiedenis van commits bekijk je met behulp van 
+<pre><code class="language-batch">git log</code></pre>
+De geschiedenis van commits die een specifieke file betreffen (soms ook heel nuttig!) bekijk je zo:
+<pre><code class="language-batch">git log ..filenaam..</code></pre>
+met op de plek van de filenaam een echte filenaam, bijvoorbeeld pagina1.html in dit project:
+</p>
+<p><img class="gitscreen" src="gitscreen9.png"></p>
+<p>We kijken in iets meer detail naar de manier waarop een enkele commit wordt aangeduid:</p>
+<p><img class="gitscreen" src="gitscreen10.png"></p>
+<p>Naast de rode pijl staat de hash (dus de 'handtekening') van deze commit. Deze hash wordt berekend aan de hand van de inhoud van het totale project na de commit. Een letter veranderen in de code en weer committen zal een totaal andere hash opleveren. Denk aan de MD5 en SHA1 hashing technieken. De kans dat in een groot project twee commits dezelfde hash (handtekening) krijgen is verwaarloosbaar.</p>
+<p>Een dergelijk identificatie teken wordt wel een 'ref' genoemd (een 'reference'). 
+<p>Je kunt 'terugkeren' naar een bepaald punt in de commithistorie met behulp van het commando <b>checkout</b> alleen moet je hierbij (een deel van) de hash opgeven:</p>
+<pre><code class="language-batch">git checkout ..hash..</code></pre>
+<p>Op de plek van ..hash.. zet je de eerste 7 tekens van de hash (of natuurlijk de complete hash) van de commit waar je naar terug wilt. Als het Git op basis van die 7 tekens nog niet duidelijk is welke commit je bedoelt hoor je dat vanzelf. Na dit commando bestaat je working directory uit alle files zoals die waren ten tijde van die commit. Wil je weer terug naar de stand van net? Kijk in de historie en doe een volgende checkout met de hash van de een na laatste commit. Dan heb je de toestand weer terug voordat je in het verleden dook. Je raakt dus geen werk kwijt als je terugspringt in de geschiedenis.</p>
+<p>Als je terugspringt in de geschiedenis is het vaak een goed idee om van die ontwikkelijn een aparte 'branch' te maken (zie volgende pagina). Daardoor staat die ontwikkellijn dan weer op zichzelf. Je kunt in een later stadium altijd ontwikkellijnen combineren. Daarover later. Het commando om meteen een aparte ontwikkellijn te maken van een stap terug in de geschiedenis is:</p>
+<pre><code class="language-batch">git checkout ..hash.. -b ..nieuwe_ontwikkel_lijn..</code></pre>
+<p>met op de plek van ..nieuwe_ontwikkel_lijn.. de zelfgekozen naam voor die lijn.  Meer over <i>branches</i> en ontwikkellijnen op de volgende pagina.</p>
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

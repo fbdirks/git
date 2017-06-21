@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="windows-1252">
+</head>
+<body>
+<header>
+</header>
+<article>
+<h2>7: Branches en Merges</h2>
+<p>Een <i>branche</i> is een ontwikkellijn in het huidige project die onderscheiden is van andere ontwikkellijnen.</p>
+<p>Een voorbeeld is bijvoorbeeld dat iemand van het team (of jijzelf) wil proberen om een bepaald onderdeel van een site of applicatie anders op te zetten of een compleet nieuwe feature aan een applicatie toe te voegen. Om anderen of jezelf niet in de weg te zitten bij het werken aan de 'normale' en misschien wel zwaar geteste en perfect werkende ontwikkellijn maak je dan een aparte ontwikkellijn, of in het jargon van Git: een 'branche', een vertakking. Dit is het commando:</p>
+<pre><code class="language-batch">
+git branche "pagina33"
+</code></pre>
+<p>Als je <i>git status</i> zie je geen verschil en dat komt omdat de vertakking wel gemaakt is maar je nog niet naar de vertakking geswitchd bent. Dat doe je met het commando (en we voegen er meteen een <i>git status</i> aan toe:</p>
+<pre><code class="language-batch">
+git checkout pagina33
+git status
+</code></pre>
+<p>Met dit als resultaat:</p>
+<p><img class="gitscreen" src="gitscreen11.png"></p>
+<p>Met 
+<pre><code class="language-batch">
+git branch --list
+</code></pre>
+kun je bekijken welke vertakkingen het huidige project kent. Met <b>git checkout</b> kun je nu zoals hierboven beschreven steeds wisselen tussen branches</p>
+<p><img class="gitscreen" src="gitscreen12.png"></p>
+<p>Stel je voor dat je in deze branch veranderingen hebt aangebracht en daar tevreden over bent. De volgende logische stap is dan om jouw veranderingen over te brengen naar de hoofdtak, de <b>master</b>. De volgende commando's zorgen daarvoor:</p>
+<pre><code class="language-batch">
+git checkout master
+git merge pagina33
+</code></pre>
+<p>Met dit als resultaat:</p>
+<p><img class="gitscreen" src="gitscreen13.png"></p>
+<p>Maar wat als ondertussen iemand anders heeft doorgewerkt aan de hoofdontwikkellijn en één of een paar van 'jouw' files niet meer sporen met die hoofdlijn? We hebben dan een 'merge conflict'. Daarover meer op de volgende pagina.</p> 
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

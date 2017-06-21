@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="windows-1252">
+</head>
+<body>
+<header>
+</header>
+<article>
+
+<h2>4: Tracked, Modified and Staged</h2>
+<p>Ieder bestand in een directory onder git's versie controle is ?f tracked ?f niet tracked. Een tracked file kan zijn: niet veranderd, veranderd maar nog niet 'staged', of veranderd en 'staged'. Misschien ben je nu in verwarring. Het is de moeite waard dit onderscheid in een limitatieve opsomming op te delen:</p>
+<p>Bestanden in een git directory zijn ....
+  <ul>
+    <li>untracked (bv omdat ze nieuw zijn of je ze bewust wilt negeren)</li>
+    <li>tracked maar niet veranderd (ze bestaan al in de repository, <i>git status</i> negeert ze)</li>
+    <li>tracked, veranderd maar nog niet 'staged' (ze zijn gewijzigd of nieuw en wachten op een <i>git add</i>)</li>
+    <li>tracked, veranderd en 'staged' (deze staan klaar voor een <i>git commit</i>)</li>
+  </ul>
+De staging area heet ook wel de 'index' van een project.</p>
+<h2>Nog meer nuttige git commando's</h2>
+<p>Git heeft nog veel meer commando's, soms handig soms onmisbaar bij grote projecten. Dit zijn er een paar:</p>
+<p>Om een tracked file te hernoemen:</p>
+<pre><code class="language-git">git mv oud-file-naam nieuwe-file-naam</code></pre>
+<p>Om een tracked file uit de repository te verwijderen:</p>
+<pre><code class="language-git">git rm file-naam</code></pre>
+<p>De mv en rm commando's doen automatisch een 'staging' (de 'add'), maar je moet nog wel een commit doen!</p>
+<p>Als je wijzigingen hebt aangebracht aan een bestand, maar eigenlijk weer terug wilt naar de versie die als laatste gecommit is:</p>
+<pre><code class="language-git">git checkout -- file-naam</code></pre>
+<p><b>Opmerking:</b> Dit soort acties is een van de belangrijkste bestaansreden voor versie controle systemen. Je kunt in een dergelijk systeem altijd rustig doordenken en doorwerken aan je programma, maar als je in een doodlopende weg terecht bent gekomen toch altijd weer relatief moeiteloos terugkeren! Reden te meer om altijd heel overdacht om te gaan met commits.</p>
+<p>Als de veranderde file - die je dus eigenlijk niet meer wilt - toch al in de staging area staat (je hebt dus al een <i>git add</i> gegeven maar nog geen <i>git commit</i>) moet je iets meer moeite doen en de file 'ont'-stagen:</p>
+<pre><code class="language-batch">git reset HEAD file-naam</code></pre>
+
+<p>Er zijn twee manieren om een help-pagina voor een git commando te bekijken, bijvoorbeeld voor het commando <i>status</i>:</p>
+<pre><code class="language-batch">git help status
+man git-status</code></pre>
+De <i>tweede</i> werkt alleen op Linux systemen. De <i>eerste</i> opent een internetbrowser met de documentatiepagina.</p>
+<p>Tot slot, <i>git grep</i> zoekt naar een specifiek patroon in alle files in de repository. Om alle plekken te vinden waar 'Wel' voorkomt doe je dit:</p>
+<pre><code class="language-batch">git grep "Wel"</code></pre>
+<p>Je kunt in deze zoekterm reguliere expressies gebruiken!</p>
+
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>

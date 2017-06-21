@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../prism/prism-coy.css" rel="stylesheet" />
+<link href="jstijl.css" rel="stylesheet" />
+<meta charset="windows-1252">
+</head>
+<body>
+<header>
+</header>
+<article>
+
+
+<h2>5: Een project clonen</h2>
+<p>Je hebt een nieuw project gestart in de project1 directory, een file toegevoegd en veranderd. Maar de situatie komt ook vaak voor dat je begint met een bestaande codebase (bijvoorbeeld van je collega, of van een eerder project). Als dat eerdere project onder git versie controle staat kun je het eenvoudig 'klonen' (=een kopie maken die ook weer onder git versie controle staat).</p>
+<p>Dat gaat zo. Laten we een directory omhoog gaan en project project1 clonen naar project2 en daarin verder werken:</p>
+<pre><code class="language-batch">cd ..
+git clone project1 project2
+cd test2
+</code></pre>
+<p><img class="gitscreen" src="gitscreen7.png"></p>
+<p>Ga met <b>cd project2</b> naar de map project2. Kijk met <b>dir</b> of probeersel.html hier ook voorkomt. Bovendien, als je <i>git log</i> doet zie je dat de hele commit geschiedenis ook hier bestaat. <i>Git clone</i> kopieert niet alleen de bestanden, maar ook de complete repository en commit geschiedenis. De kloon is kompleet. Vlak na het commando <i>git clone</i> zijn de directories project1 en project2 identiek.</p>
+<p>We gaan de zaak compliceren en wat veranderingen aan brengen. We zitten in test2. Wijzig het programma bijvoorbeeld zo:</p>
+<pre ><code class="language-markup"><script type="prism-html-markup">
+<body>
+<h1>Herzlich wilkommen zum Project</h2>
+</body></script></code></pre>
+<p>De Duitse versie dus, met een foutje er in (let op de &lt;h2&gt;)..</p>
+<p>Als we <i>git status</i> intikken zien we dat probeersel.html veranderd is. Dus moeten we 'adden' en 'committen':</p>
+<pre><code class="language-batch">git add probeersel.php
+git commit -m "Duitse versie begonnen"
+</code></pre>
+<p>Probeer nu <i>git log</i> om te kijken naar de complete commit geschiedenis. Maar dit commando:</p>
+<pre><code class="language-batch">git log origin..</code></pre>
+<p>laat alleen maar de commits zien <b>na</b> de cloning. Hier kun je de opties -p en --color aan toevoegen om de diffs ook goed te bekijken:</p>
+<pre><code class="language-batch">git log -p --color origin..</code></pre>
+<p>We gaan de code van probeersel.html weer corrigeren:</p>
+<pre ><code class="language-markup"><script type="prism-html-markup">
+<body>
+<h1>Herzlich wilkommen zum Project</h1>
+</body></script></code></pre>
+<p>En daarna weer adden en committen:</p>
+<pre><code class="language-batch">git add probeersel.html
+git commit -m "Bugfix: tikfout in h1 regel hersteld"</code></pre>
+<p>Hier na zie je met:</p>
+<pre><code class="language-batch">git log -p --color origin..</code></pre>
+<p>je commitgeschiedenis sinds de kloning groeien.</p>
+<p><img class="gitscreen" src="gitscreen8.png"></p>
+
+<h2>Een directory toevoegen aan een repository</h2>
+<p>Als je in een git directory een directory maakt en er wat bestanden in plaatst kun je ook een <i>directory</i> 'adden'. Stel je voor dat je in test1 een directory aanmaakt 'testplan' en daar wat bestanden in plaatst. Als je dan dit doet:</p>
+<pre><code class="language-batch">git add testplan
+git commit -m "testplan map toegevoegd"</code></pre>
+<p>zul je merken dat alle bestanden in de testmap directory nu gewoon meedoen in de repository (en bijgehouden worden!)</p>
+<h2>Veranderingen 'trekken' (pull) van een remote repository</h2>
+<p>Het begint met het klonen van een remote repository, dus een repository die niet op jouw computer staat maar bijvoorbeeld op het internet. Je moet dan een internet URL beschikbaar hebben. Stel je voor dat je weet dat op <b>https://github.com/fbdirks/gitCourse.git</b> een git repository staat. Geef dan dit commando:</p>
+<pre><code class="language-git">git clone https://github.com/fbdirks/gitCourse.git</code></pre>
+<p>Er zal nu een map <b>gitCourse</b> aangemaakt zijn en als je die opent zie je alle bijhorende bestanden.</p>
+<p>Dit klonen hoeft maar één keer. Tegelijk met alle bestanden is ook informatie opgeslagen waarmee je later nieuwe versies van deze repository kan ophalen. Hiervoor is maar een heel kort commando nodig:
+<pre><code class="language-batch">git pull</code></pre></p>
+<p>Behalve het ophalen van nieuwe versies van een remote project zul je aan dat project ook willen bijdragen. Daarvoor heb je behalve je eigen versies en veranderingen in het project ook toestemming nodig om jouw aanpassingen te mogen uploaden naar het remote project. Vaak gaat dat via een usernaam en wachtwoord combinatie. Als je die toestemming hebt is ook weer een buitengewoon kort commando voldoende om jouw wijzigingen naar het project te uploaden:
+<pre><code class="language-batch">git push</code></pre></p>
+<p>Is het plaatje hiermee compleet? Nee. Er zijn nog een paar belangrijke zaken te bespreken:
+<ul>
+<li>Hoe kun je de ontwikkeling van je project bekijken en eventueel stapjes terugzetten?</li>
+<li>Hoe kun je verschillende ontwikkellijnen opzetten en hoe combineer je die uiteindelijk in de hoofdlijn?</li>
+<li>Wat doe je als verschillende teamleaden aan dezelfde bestanden hebben gewerkt en hun wijzigingen niet zonder meer samen te voegen zijn?</li>
+</ul>
+</p>
+
+
+</article>
+<footer>
+
+</footer>
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+  
+<script src="../prism/prism-coy.js"></script>
+<script src="../clip/clipboard.min.js"></script>
+<script src="functies.js"></script>
+<script>
+$( document ).ready(function(){
+	kop();
+	voet();
+});
+</script>
+</body>
